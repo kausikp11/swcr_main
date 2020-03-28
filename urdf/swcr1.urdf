@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<robot name="swcr">
+  <link name="base_link">
+    <visual>
+    	<origin rpy="0.0 0 0" xyz="0 0 0"/>
+          <geometry>
+            <mesh filename="package://swcr/meshes/base_link.dae"/>
+          </geometry>
+    </visual>
+  </link>
+
+  <link name="bin_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://swcr/meshes/Bin_Link.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="bin_joint" type="fixed">
+  	<parent link="base_link"/>
+  	<child link="bin_link"/>
+  	<origin xyz="0.045 -0.00500000000000001 0.0525" rpy="3.14159265358979 0 -1.570796326794"/>
+  </joint>
+
+  <link name="pan_link">
+  	<visual>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  		<geometry>
+  			<mesh filename="package://swcr/meshes/Pan_Link.dae"/>
+  		</geometry>
+  	</visual>
+  </link>
+  <joint name="pan_joint" type="fixed">
+  	<parent link="base_link"/>
+  	<child link="pan_link"/>
+  	<origin rpy="1.5707963267949 -0.0688308576600601 0" xyz="0.11821106537886 0 0.0043695506838019"/>
+  </joint>
+
+  <link name="wheel1f_link">
+  	<visual>
+  		<origin xyz="0.085 -0.1513 -0.0175650643543415" rpy="1.86455912828869 0 1.5707963267949"/>
+      <geometry>
+        <mesh filename="package://swcr/meshes/Wheel1R_Link.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="wheel_joint" type="continuous">
+      <axis xyz="1 0 0" rpy="0 0 0" />
+      <parent link="base_link"/>
+      <child link="wheel1f_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+   </joint>
+
+  <link name="wheel2f_link">
+  	<visual>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+  		<geometry>
+  			<mesh filename="package://swcr/meshes/Wheel1R_Link.dae"/>
+  		</geometry>
+  	</visual>
+  </link>
+  <joint name="wheel2f_joint" type="fixed">
+  	<parent link="base_link"/>
+  	<child link="wheel2f_link"/>
+  	<origin xyz="0.0823186569435573 0.1513 -0.0180989682049121" rpy="-1.5707963267949 0 -1.5707963267949"/>
+   </joint>
+
+
+   <link name="wheel1b_link">
+  	<visual>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://swcr/meshes/Wheel1R_Link.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="wheel1b_joint" type="fixed">
+  	<parent link="base_link"/>
+  	<child link="wheel1b_link"/>
+  	<origin xyz="-0.085 -0.1513 -0.0175650643543415" rpy="1.86455912828869 0 1.5707963267949"/>
+  </joint>
+
+  <link name="wheel2b_link">
+  	<visual>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://swcr/meshes/Wheel1R_Link.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="wheel2b_joint" type="fixed">
+  	<parent link="base_link"/>
+  	<child link="wheel2b_link"/>
+  	<origin xyz="-0.087681 0.1513 -0.018099" rpy="2.7665 0 -1.5708"/>
+  </joint>
+</robot>
