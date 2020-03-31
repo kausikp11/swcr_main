@@ -1,0 +1,8 @@
+swcr_joint_publisher:
+  type: "joint_state_controller/JointStateController"
+  publish_rate: 50
+
+swcr_velocity_controller:
+  type: "position_controllers/JointPositionController"
+  joint: wheelfr_joint
+

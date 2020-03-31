@@ -1,0 +1,3 @@
+controller_joint_names: ['', 'wheelfr_joint', 'wheelfl_joint', 'wheelbl_joint', 'wheelbr_joint', 'pan_joint', ]
+type: "joint_state_controller/JointStateController"
+publish_rate: 50

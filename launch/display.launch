@@ -1,12 +1,18 @@
 <launch>
   <arg
-    name="model" />
+    name="model" default="$(find swcr_main)/urdf/swcr_main.urdf.xacro"/>
   <arg
     name="gui"
-    default="True" />
-  <param
-    name="robot_description"
-    textfile="$(find swcr)/urdf/swcr.urdf" />
+    default="false" />
+  <param name="robot_description" command="xacro --inorder '$(find swcr_main)/urdf/swcr_main.urdf.xacro'"/>
+  <include file="$(find swcr_main)/launch/gazebo.launch">
+    <arg name="model" value="$(arg model)"/>
+  </include>
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find swcr_main)/urdf.rviz" required="true"/>
   <param
     name="use_gui"
     value="$(arg gui)" />
@@ -14,13 +20,8 @@
     name="joint_state_publisher"
     pkg="joint_state_publisher"
     type="joint_state_publisher" />
-  <node
-    name="robot_state_publisher"
-    pkg="robot_state_publisher"
-    type="state_publisher" />
-  <node
-    name="rviz"
-    pkg="rviz"
-    type="rviz"
-    args="-d $(find swcr)/urdf.rviz" />
+  <rosparam command="load" file="$(find swcr_main)/config/swcr_state.yaml"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="swcr_velocity_controller swcr_joint_publisher"/>
+
 </launch>
