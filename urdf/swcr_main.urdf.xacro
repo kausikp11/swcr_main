@@ -43,6 +43,12 @@
       </geometry>
     </collision>
   </link>
+  <link name="base_footprint"/>
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+  </joint>
   <link
     name="clampfr_link">
     <inertial>
@@ -181,11 +187,10 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="-0.02 0 0"
+        rpy="0 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://swcr_main/meshes/wheelfr_link.STL" />
+        <cylinder radius="0.05" length="0.035"/>
       </geometry>
     </collision>
   </link>
@@ -204,14 +209,21 @@
   </joint>
   <transmission name="wheelfr_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="wheelfr_actuator">
-      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    <actuator name="$wheelfr_motor">
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
     <joint name="wheelfr_joint">
       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
   </transmission>
+  <gazebo reference="wheelfr_link">
+      <mu1 value="200.0"/>
+      <mu2 value="100.0"/>
+      <minDepth>0.005</minDepth>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Grey</material>
+   </gazebo>
   <link
     name="clampfl_link">
     <inertial>
@@ -350,11 +362,10 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="-0.02 0 0"
+        rpy="0 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://swcr_main/meshes/wheelfl_link.STL" />
+        <cylinder radius="0.05" length="0.035"/>
       </geometry>
     </collision>
   </link>
@@ -373,14 +384,22 @@
   </joint>
   <transmission name="wheelfl_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="wheelfl_actuator">
-      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    <actuator name="$wheelfl_motor">
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
     <joint name="wheelfl_joint">
       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
   </transmission>
+  <gazebo reference="wheelfl_link">
+      <mu1 value="200.0"/>
+      <mu2 value="100.0"/>
+      <minDepth>0.005</minDepth>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Grey</material>
+   </gazebo>
+  
   <link
     name="clampbl_link">
     <inertial>
@@ -519,11 +538,10 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="-0.02 0 0"
+        rpy="0 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://swcr_main/meshes/wheelbl_link.STL" />
+        <cylinder radius="0.05" length="0.035"/>
       </geometry>
     </collision>
   </link>
@@ -539,11 +557,24 @@
       link="wheelbl_link" />
     <axis
       xyz="1 0 0" />
-    <mimic
-      joint="wheelfl_joint"
-      multiplier="1"
-      offset="0" />
   </joint>
+  <transmission name="wheelbl_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="$wheelbl_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="wheelbl_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+  <gazebo reference="wheelbl_link">
+       <mu1 value="200.0"/>
+       <mu2 value="100.0"/>
+       <minDepth>0.005</minDepth> 
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Grey</material>
+   </gazebo>
   <link
     name="clampbr_link">
     <inertial>
@@ -682,11 +713,10 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      xyz="-0.02 0 0"
+      rpy="0 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://swcr_main/meshes/wheelbr_link.STL" />
+        <cylinder radius="0.05" length="0.035"/>
       </geometry>
     </collision>
   </link>
@@ -702,11 +732,25 @@
       link="wheelbr_link" />
     <axis
       xyz="1 0 0" />
-    <mimic
-      joint="wheelfr_joint"
-      multiplier="1"
-      offset="0" />
   </joint>
+  <transmission name="wheelbr_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="$wheelbr_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="wheelbr_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+  <gazebo reference="wheelbr_link">
+      <mu1 value="200.0"/>
+      <mu2 value="100.0"/>
+      <minDepth>0.005</minDepth>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+    <material>Gazebo/Grey</material>
+   </gazebo>
+  
   <link
     name="bin_link">
     <inertial>
@@ -802,7 +846,7 @@
   </link>
   <joint
     name="pan_joint"
-    type="continuous">
+    type="revolute">
     <origin
       xyz="0.12 0 0.0075"
       rpy="1.5708 -0.068831 0" />
@@ -813,22 +857,24 @@
     <axis
       xyz="0 0 1" />
     <limit
+      lower="0"
+      upper ="1.57"
       effort="30"
       velocity="0.5" />
   </joint>
-  <transmission name="pan_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="pan_actuator">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-    <joint name="pan_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-  </transmission>
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/swcr</robotNamespace>
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
+      <gazebo>
+        <plugin name="gazebo_ros_p3d" filename="libgazebo_ros_p3d.so">
+            <updateRate>100</updateRate>
+            <bodyName>base_footprint</bodyName>
+            <topicName>exact_pose</topicName>
+            <frameName>map</frameName>
+        </plugin>
+    </gazebo>
 </robot>

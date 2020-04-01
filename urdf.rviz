@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1/Status1
       Splitter Ratio: 0.5
     Tree Height: 565
   - Class: rviz/Selection
@@ -61,6 +60,10 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
@@ -147,6 +150,8 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_footprint:
+          Value: true
         base_link:
           Value: true
         bin_link:
@@ -167,6 +172,8 @@ Visualization Manager:
           Value: true
         motorfr_link:
           Value: true
+        odom:
+          Value: true
         pan_link:
           Value: true
         wheelbl_link:
@@ -183,34 +190,36 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          bin_link:
-            {}
-          clampbl_link:
-            motorbl_link:
-              wheelbl_link:
+        odom:
+          base_footprint:
+            base_link:
+              bin_link:
                 {}
-          clampbr_link:
-            motorbr_link:
-              wheelbr_link:
+              clampbl_link:
+                motorbl_link:
+                  wheelbl_link:
+                    {}
+              clampbr_link:
+                motorbr_link:
+                  wheelbr_link:
+                    {}
+              clampfl_link:
+                motorfl_link:
+                  wheelfl_link:
+                    {}
+              clampfr_link:
+                motorfr_link:
+                  wheelfr_link:
+                    {}
+              pan_link:
                 {}
-          clampfl_link:
-            motorfl_link:
-              wheelfl_link:
-                {}
-          clampfr_link:
-            motorfr_link:
-              wheelfr_link:
-                {}
-          pan_link:
-            {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -231,7 +240,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.44440746
+      Distance: 6.27344131
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -241,15 +250,15 @@ Visualization Manager:
         X: 0
         Y: 0
         Z: 0
-      Focal Shape Fixed Size: true
+      Focal Shape Fixed Size: false
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.785398006
+      Pitch: 0.785398185
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.785398006
+      Yaw: 0.785398185
     Saved: ~
 Window Geometry:
   Displays:
