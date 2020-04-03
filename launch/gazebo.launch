@@ -14,9 +14,8 @@
   </include>
 
   <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)"/>
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-unpause -urdf -model robot -param robot_description" respawn="false" output="screen"/>
-  <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher">
-    <param name="publish_frequency" type="double" value="30.0" />
+  <node name="swcr_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 1.0 -urdf -model swcr -param robot_description" respawn="false" output="screen"/>
+  <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher" output="screen">
   </node>
   
   

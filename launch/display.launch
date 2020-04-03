@@ -3,7 +3,7 @@
   <arg
     name="model" default="$(find swcr_main)/urdf/swcr_main.urdf.xacro"/>
  
-  <param name="robot_description" command="xacro --inorder '$(find swcr_main)/urdf/swcr_main.urdf.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find swcr_main)/urdf/swcr_main.urdf.xacro'"/>
   <include file="$(find swcr_main)/launch/gazebo.launch">
     <arg name="model" value="$(arg model)"/>
   </include>
@@ -12,14 +12,12 @@
     pkg="rviz"
     type="rviz"
     args="-d $(find swcr_main)/urdf.rviz" required="true"/>
-  <!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-    <param name="use_gui" value="False"/>
-  </node>-->
   <rosparam command="load" file="$(find swcr_main)/config/swcr_state.yaml"/>
+  <rosparam command="load" file="$(find swcr_main)/config/swcr.yaml"/>
 
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="swcr_velocity_controller swcr_joint_publisher"/>
+  <node name="swcr_controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="/swcr/swcr_velocity_controller /swcr/swcr_joint_publisher"/>
    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-  <param name="default_topic" type="str" value="/swcr_velocity_controller/cmd_vel"/>
+  <param name="default_topic" value="/swcr/swcr_velocity_controller/cmd_vel"/>
   </node>
   <!--<node name="cmd_vel_relay" type="relay" pkg="topic_tools" args="/cmd_vel /swcr_velocity_controller/cmd_vel" />
     <node name="odom_relay" type="relay" pkg="topic_tools" args="/swcr_velocity_controller/odom /odom" />-->

@@ -1,0 +1,4 @@
+swcr:
+  swcr_joint_publisher:
+    type: "joint_state_controller/JointStateController"
+    publish_rate: 50

@@ -217,11 +217,9 @@
     </joint>
   </transmission>
   <gazebo reference="wheelfr_link">
-      <mu1 value="200.0"/>
-      <mu2 value="100.0"/>
-      <minDepth>0.005</minDepth>
+ 
       <kp value="10000000.0" />
-      <kd value="1.0" />
+      <kd value="1"/>
     <material>Gazebo/Grey</material>
    </gazebo>
   <link
@@ -373,8 +371,8 @@
     name="wheelfl_joint"
     type="continuous">
     <origin
-      xyz="0 0.007 0.0343"
-      rpy="0.80263 1.5708 0" />
+      xyz="0 0.007 0.0686"
+      rpy="0 -1.5708 0" />
     <parent
       link="motorfl_link" />
     <child
@@ -392,11 +390,9 @@
     </joint>
   </transmission>
   <gazebo reference="wheelfl_link">
-      <mu1 value="200.0"/>
-      <mu2 value="100.0"/>
-      <minDepth>0.005</minDepth>
+ 
       <kp value="10000000.0" />
-      <kd value="1.0" />
+      <kd value="1"/>
     <material>Gazebo/Grey</material>
    </gazebo>
   
@@ -549,8 +545,8 @@
     name="wheelbl_joint"
     type="continuous">
     <origin
-      xyz="0 0.007 0.0343"
-      rpy="0.80263 1.5708 0" />
+      xyz="0 0.007 0.0686"
+      rpy="0 -1.5708 0" />
     <parent
       link="motorbl_link" />
     <child
@@ -568,11 +564,9 @@
     </joint>
   </transmission>
   <gazebo reference="wheelbl_link">
-       <mu1 value="200.0"/>
-       <mu2 value="100.0"/>
-       <minDepth>0.005</minDepth> 
+ 
       <kp value="10000000.0" />
-      <kd value="1.0" />
+      <kd value="1"/>
     <material>Gazebo/Grey</material>
    </gazebo>
   <link
@@ -725,7 +719,7 @@
     type="continuous">
     <origin
       xyz="0 0.007 0.0343"
-      rpy="0.29376 1.5708 0" />
+      rpy="0 1.5708 0" />
     <parent
       link="motorbr_link" />
     <child
@@ -743,11 +737,9 @@
     </joint>
   </transmission>
   <gazebo reference="wheelbr_link">
-      <mu1 value="200.0"/>
-      <mu2 value="100.0"/>
-      <minDepth>0.005</minDepth>
+
       <kp value="10000000.0" />
-      <kd value="1.0" />
+      <kd value="1"/>
     <material>Gazebo/Grey</material>
    </gazebo>
   
@@ -811,14 +803,14 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <mass
-        value="0" />
+        value="1" />
       <inertia
-        ixx="0"
-        ixy="0"
-        ixz="0"
-        iyy="0"
-        iyz="0"
-        izz="0" />
+        ixx="1"
+        ixy="1"
+        ixz="1"
+        iyy="1"
+        iyz="1"
+        izz="1" />
     </inertial>
     <visual>
       <origin
@@ -862,6 +854,15 @@
       effort="30"
       velocity="0.5" />
   </joint>
+    <transmission name="pan_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="$pan_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="pan_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+</transmission>
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/</robotNamespace>
@@ -877,4 +878,5 @@
             <frameName>map</frameName>
         </plugin>
     </gazebo>
+
 </robot>

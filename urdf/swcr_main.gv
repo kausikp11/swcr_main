@@ -1,0 +1,47 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"bin_link" [label="bin_link"];
+"clampbl_link" [label="clampbl_link"];
+"motorbl_link" [label="motorbl_link"];
+"wheelbl_link" [label="wheelbl_link"];
+"clampbr_link" [label="clampbr_link"];
+"motorbr_link" [label="motorbr_link"];
+"wheelbr_link" [label="wheelbr_link"];
+"clampfl_link" [label="clampfl_link"];
+"motorfl_link" [label="motorfl_link"];
+"wheelfl_link" [label="wheelfl_link"];
+"clampfr_link" [label="clampfr_link"];
+"motorfr_link" [label="motorfr_link"];
+"wheelfr_link" [label="wheelfr_link"];
+"pan_link" [label="pan_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "bin_joint" [label="xyz: 0.045 -0.005 0.0525 \nrpy: -3.14159 4.23516e-22 -1.5708"]
+"bin_joint" -> "bin_link"
+"base_link" -> "clampbl_joint" [label="xyz: -0.085 0.115 -0.007 \nrpy: 1.5708 -4.23516e-22 -3.14159"]
+"clampbl_joint" -> "clampbl_link"
+"clampbl_link" -> "motorbl_joint" [label="xyz: 0 -0.017565 -0.0155 \nrpy: 0 0 -0.39309"]
+"motorbl_joint" -> "motorbl_link"
+"motorbl_link" -> "wheelbl_joint" [label="xyz: 0 0.007 0.0343 \nrpy: 0 1.5708 -0.802627"]
+"wheelbl_joint" -> "wheelbl_link"
+"base_link" -> "clampbr_joint" [label="xyz: -0.085 -0.115 -0.007 \nrpy: 1.5708 -0 0"]
+"clampbr_joint" -> "clampbr_link"
+"clampbr_link" -> "motorbr_joint" [label="xyz: 0 -0.017565 -0.0155 \nrpy: 0 -0 0"]
+"motorbr_joint" -> "motorbr_link"
+"motorbr_link" -> "wheelbr_joint" [label="xyz: 0 0.007 0.0343 \nrpy: 0 1.5708 -0.293759"]
+"wheelbr_joint" -> "wheelbr_link"
+"base_link" -> "clampfl_joint" [label="xyz: 0.085 0.115 -0.007 \nrpy: 1.5708 -4.23516e-22 -3.14159"]
+"clampfl_joint" -> "clampfl_link"
+"clampfl_link" -> "motorfl_joint" [label="xyz: 0 -0.017565 -0.0155 \nrpy: 0 0 -0.39309"]
+"motorfl_joint" -> "motorfl_link"
+"motorfl_link" -> "wheelfl_joint" [label="xyz: 0 0.007 0.0343 \nrpy: 0 1.5708 -0.802627"]
+"wheelfl_joint" -> "wheelfl_link"
+"base_link" -> "clampfr_joint" [label="xyz: 0.085 -0.115 -0.007 \nrpy: 1.5708 -0 0"]
+"clampfr_joint" -> "clampfr_link"
+"clampfr_link" -> "motorfr_joint" [label="xyz: 0 -0.017565 -0.0155 \nrpy: 0 -0 0"]
+"motorfr_joint" -> "motorfr_link"
+"motorfr_link" -> "wheelfr_joint" [label="xyz: 0 0.007 0.0343 \nrpy: 0 1.5708 -0"]
+"wheelfr_joint" -> "wheelfr_link"
+"base_link" -> "pan_joint" [label="xyz: 0.12 0 0.0075 \nrpy: 1.5708 -0.068831 0"]
+"pan_joint" -> "pan_link"
+}
