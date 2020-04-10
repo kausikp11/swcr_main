@@ -8,6 +8,8 @@ swcr:
     pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
     twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
 
+    wheel_separation : 0.31
+
   
     base_frame_id: base_footprint
     cmd_vel_timeout: 0.25
